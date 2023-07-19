@@ -25,12 +25,22 @@ int main()
     // kadane's algorithms : O(N) space complexiety O(1)
     // the subarray with negative sum is discarded 
     // we carray subarray till it gives positive sum 
-
+    
+    int ansstart = -1 , ansend = -1 ,  start = -1 ;
     int sum = 0 , maxi = INT_MIN;
     for(int i = 0 ; i < n ; i++)
-    {
+    {   
+        if(sum == 0 )
+        {
+             start = i ;
+        }
         sum += arr[i]; // carray subarray till it gives positive sum  
-        maxi = max(maxi , sum);
+         if ( sum > maxi)
+         {
+            maxi = sum ;
+            ansstart = start;
+            ansend = i ;
+         }
         if(sum < 0)
         {
             sum = 0 ;
@@ -39,5 +49,12 @@ int main()
     }
     cout << " Maximum sum of contigious subarray is given as : " << maxi << endl;
 
+   cout << "\n\n Printing contigious subarray : " << endl;
+   for(int i =  ansstart ; i <= ansend ; i++ )
+   {
+        cout << arr[i] << "  " ;
+   }
+
+    // Printing subarray 
 
 }
