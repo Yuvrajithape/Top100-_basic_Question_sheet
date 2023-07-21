@@ -46,7 +46,7 @@ int main()
             left++;
             right++;
         }
-        if(gap==1)break;
+        if(gap==1)break; // this condition is mandatory think about you 
         gap = gap/2 + gap%2 ;
     }
 
