@@ -1,26 +1,48 @@
 #include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 int main()
 {
-    string s = "{][][][}" ;
-    char arr[] = {'[' , ']' , '\0'};
-    int n = s.length();
-    int m = sizeof(arr) ;
-    cout << " size of string :  " << s.size() << endl;
-    cout << " length of string :  " << n << endl;
-    cout << " size of char array  :  " << m << endl;
-    cout << s << endl; 
-    s[1] = '\0';    
-    s[2] = '\0';    
-    s[3] = '\0';    
-    s[4] = '\0';    
-    s[5] = '\0';    
-    s[6] = '\0';    
+    string s = "{(((({{{[[[[[]]]]]}}}))))}" ;
+    // Find Balanced Parenthesis or not 
+    // using stack data structure 
+    stack<char>st ;
+    for(auto it : s )
+    {
+        if(it == '[' || it == '(' || it == '{')
+        {
+            st.push(it);
+        }
+        else{
 
-    s[7] = '\0';
-    cout << s << endl;
-    cout << " size of string :  " << s.size() << endl;
+             if(!st.empty())
+             {
+                char ch = st.top();
 
-    cout << arr << endl;
+                if( (ch == '(' && it == ')')   || (ch == '[' && it == ']')  || ( ch == '{' && it == '}')   )
+                {
+                   st.pop();
+                }
+                else{
+                    
+                    cout << "  Unbalanced Pyrenthesis " << endl;
+                    return 0 ;
+                }
+             }
+            else{
+                 cout << " Unbalanced Pyrenthesis " << endl;
+                    return 0 ;
+            }
+        }
+         
+    }
 
+    if(st.empty())
+    {
+        cout << " Balanced Pyrenthesis " << endl;
+    }
+    else{
+        cout << " Unbalanced Pyrenethesis " << endl; 
+    }
+      
 }
